@@ -10,10 +10,10 @@ print(dataset)
 
 # matrix of feature
 X = dataset.iloc[:, :-1].values
-print('x\n', X)
+print('X >>\n', X)
 
 Y = dataset.iloc[:, 3].values
-print('y\n', Y)
+print('Y >>\n', Y)
 
 from sklearn.preprocessing import Imputer
 
@@ -26,12 +26,23 @@ imputer = Imputer(missing_values='NaN', strategy='mean', axis=0)
 
 imputer = imputer.fit(X[:, 1:3])
 X[:, 1:3] = imputer.transform(X[:, 1:3])
-print('x\n', X)
+print('X >>\n', X)
 
 # Encoding categorical variable
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
 labelencoder_X = LabelEncoder()
 X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
 
-print('\nfit transform\n', X)
+print('\nX fit transform >>\n', X)
+
+onehotencoder = OneHotEncoder(categorical_features=[0])
+np.set_printoptions(threshold=np.nan)
+X = onehotencoder.fit_transform(X).toarray()
+print('\nX onehotencoder fit transform >>\n', X)
+
+labelencoder_Y = LabelEncoder()
+Y = labelencoder_Y.fit_transform(Y)
+
+print('Y after label encoding>>\n', Y)
+
