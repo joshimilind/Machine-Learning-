@@ -4,10 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # reading data
-
-dataset = pd.read_csv(
-    '/home/synerzip/nlp/nlp_workspace/Machine Learning/pkg/Machine Learning A-Z Template Folder/Part 2 - Regression/Section 4 - Simple Linear Regression/Salary_Data.csv')
-# dataset = pd.read_csv('./Data.csv')
+dataset = pd.read_csv('./Data.csv')
 np.set_printoptions(threshold=np.nan)
 
 # matrix of feature
