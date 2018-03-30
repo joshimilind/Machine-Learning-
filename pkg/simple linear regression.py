@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # reading data
-dataset = pd.read_csv('./Data.csv')
+
+dataset = pd.read_csv(
+    '/home/synerzip/nlp/nlp_workspace/Machine Learning/pkg/Machine Learning A-Z Template Folder/Part 2 - Regression/Section 4 - Simple Linear Regression/Salary_Data.csv')
+# dataset = pd.read_csv('./Data.csv')
 np.set_printoptions(threshold=np.nan)
 
 # matrix of feature
@@ -24,3 +27,19 @@ from sklearn.linear_model import LinearRegression
 
 regressor = LinearRegression()
 regressor.fit(X_train, Y_train)
+
+print(regressor)
+
+# predicting the test set result
+y_pred = regressor.predict(X_test)  # vector of predictions of dependent variable
+
+print(Y_test)  # actual test data
+print(y_pred)  # predictions
+
+# visualising the training set results
+plt.scatter(X_train, Y_train, color='red')
+plt.plot(X_train, regressor.predict(X_train), color='blue')
+plt.title('Title : Salary Vs Experience')
+plt.xlabel('years of experience')
+plt.ylabel('Salary')
+plt.show()
